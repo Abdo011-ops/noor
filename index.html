@@ -6,25 +6,28 @@
     <title>تطبيق عبد الرحمن لمساعدة المسلمين</title>
     <style>
         body { background: url("https://img.freepik.com/premium-photo/dark-islamic-background-with-mosque-silhouette-golden-ornaments_1130458-3850.jpg") no-repeat center center fixed; background-size: cover; color:white; padding:10px; font-family:Arial; direction: rtl; text-align: center; }
-        .container { background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(5px); padding: 20px; border-radius: 25px; min-height: 90vh; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; align-items: center; }
-        .btn-main { padding:18px; background:#27ae60; color:white; border:none; border-radius:15px; margin:8px; width:95%; font-size:19px; font-weight:bold; cursor: pointer; display: block; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .container { background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(5px); padding: 20px; border-radius: 25px; min-height: 90vh; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; align-items: center; }
+        .btn-main { padding:18px; background:#27ae60; color:white; border:none; border-radius:15px; margin:8px; width:95%; font-size:19px; font-weight:bold; cursor: pointer; display: block; text-decoration: none; text-align: center; }
         .sebha-area { background: rgba(39, 174, 96, 0.2); border: 2px solid #f1c40f; border-radius: 20px; padding: 20px; margin-bottom: 20px; width: 90%; cursor: pointer; }
         .footer-text { margin-top:20px; border-top: 1px solid rgba(255,255,255,0.2); padding-top:15px; width: 100%; }
-        .social-icons { display: flex; justify-content: center; gap: 25px; margin: 10px 0; }
+        .social-icons { display: flex; justify-content: center; gap: 25px; margin: 15px 0; }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div id="main-page" class="container">
         <h1 style="color: #f1c40f; font-size: 20px;">تطبيق عبد الرحمن لمساعدة المسلمين</h1>
-        <div class="sebha-area" onclick="add()">
+        
+        <div class="sebha-area" onclick="addSebha()">
             <div id="zekrDisplay" style="font-size: 24px; color: #27ae60; font-weight: bold;">سبحان الله</div>
             <div id="count" style="font-size: 65px; color: #f1c40f; font-weight: bold;">0</div>
             <p>اضغط للتسبيح (يتغير كل 33)</p>
         </div>
-        <a href="https://abdo011-ops.github.io/noor/p_cities" class="btn-main">🕋 مواقيت الصلاة (20 محافظة)</a>
-        <a href="#" class="btn-main" style="background:#2980b9;">📖 المصحف الكريم</a>
-        <a href="#" class="btn-main" style="background:#f1c40f; color:black;">📜 الأحاديث النبوية (20 حديث)</a>
-        <a href="#" class="btn-main" style="background:#e74c3c;">📻 إذاعة القرآن الكريم</a>
+
+        <a href="javascript:void(0)" onclick="showPage('prayer-page')" class="btn-main">🕋 مواقيت الصلاة</a>
+        <a href="javascript:void(0)" onclick="showPage('quran-page')" class="btn-main" style="background:#2980b9;">📖 المصحف الكريم</a>
+        <a href="javascript:void(0)" onclick="showPage('hadith-page')" class="btn-main" style="background:#f1c40f; color:black;">📜 الأحاديث النبوية</a>
+        <a href="javascript:void(0)" onclick="showPage('radio-page')" class="btn-main" style="background:#e74c3c;">📻 إذاعة القرآن الكريم</a>
+
         <div class="footer-text">
             <p style="font-size:16px; font-weight:bold;">فَإِذَا جَاءَ أَمْرُ اللَّهِ قُضِيَ بِالْحَقِّ</p>
             <p style="font-size:13px; color:#27ae60;">تم تصميم هذا التطبيق لمساعدة المسلمين حول العالم</p>
@@ -36,9 +39,30 @@
             </div>
         </div>
     </div>
+
+    <div id="prayer-page" class="container" style="display:none;">
+        <h2>مواقيت الصلاة</h2>
+        <p>جاري تحميل المواقيت...</p>
+        <button class="btn-main" onclick="showPage('main-page')">العودة للرئيسية</button>
+    </div>
+
     <script>
-        let c = 0; const azkar = ["سبحان الله", "الحمد لله", "الله أكبر", "لا إله إلا الله", "أستغفر الله"];
-        function add() { c++; document.getElementById('count').innerHTML = c; let index = Math.floor(c / 33) % azkar.length; document.getElementById('zekrDisplay').innerHTML = azkar[index]; }
+        let c = 0;
+        const azkar = ["سبحان الله", "الحمد لله", "الله أكبر", "لا إله إلا الله", "أستغفر الله"];
+        
+        function addSebha() {
+            c++;
+            document.getElementById('count').innerHTML = c;
+            let index = Math.floor(c / 33) % azkar.length;
+            document.getElementById('zekrDisplay').innerHTML = azkar[index];
+        }
+
+        function showPage(pageId) {
+            document.getElementById('main-page').style.display = 'none';
+            document.getElementById('prayer-page').style.display = 'none';
+            // إخفاء أي صفحات أخرى وإظهار المطلوبة
+            document.getElementById(pageId).style.display = 'flex';
+        }
     </script>
 </body>
 </html>
