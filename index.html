@@ -3,150 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عبد الرحمن - الخدمات الذكية</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>تطبيق عبد الرحمن لمساعدة المسلمين</title>
     <style>
-        body { background-color: #0b111a; color: white; font-family: sans-serif; margin: 0; padding: 0; }
-        .cover-photo { background: url('https://i.ibb.co/5x6QKS1j/cover.jpg') no-repeat center; background-size: cover; height: 180px; }
-        header { padding: 30px 10px; text-align: center; }
-        header h1 { margin: 0; font-size: 32px; color: #fff; }
-        header p { color: #94a3b8; font-size: 16px; margin-top: 10px; }
-
-        .container { padding: 15px; max-width: 500px; margin: auto; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        
-        .card { background: #0d1117; padding: 20px; border-radius: 15px; border: 1px solid #30363d; text-align: center; display: flex; flex-direction: column; align-items: center; }
-        .card-header-flex { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        .card i { font-size: 24px; }
-        .card h3 { font-size: 18px; margin: 0; }
-        .card p { font-size: 11px; color: #8b949e; margin: 10px 0; line-height: 1.4; }
-
-        .btn { width: 80%; padding: 8px; border-radius: 8px; text-decoration: none; font-size: 14px; color: white; font-weight: bold; }
-        .bg-green { background: #064e3b; color: #10b981; border: 1px solid #065f46; }
-        .bg-blue { background: #1e3a8a; color: #fff; }
-        .bg-red { background: #7f1d1d; color: #fff; }
-        .btn-gray { background: #0d1117; color: #484f58; border: 1px solid #30363d; cursor: not-allowed; }
-
-        .partners-section { background: #f8fafc; color: #1e293b; padding: 20px; margin-top: 30px; border-radius: 25px 25px 0 0; text-align: center; }
-        .partners-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }
-        .partners-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
-        .partners-grid img { width: 100%; height: 110px; border-radius: 10px; object-fit: cover; border: 2px solid #fff; }
-        .footer-admin { display: block; padding: 15px; color: #94a3b8; text-decoration: none; font-size: 11px; margin-top: 10px; }
-
-        /* --- البوت الذكي --- */
-        #chat-widget { position: fixed; bottom: 30px; right: 20px; z-index: 1000; }
-        #chat-button { width: 65px; height: 65px; background: #1e3a8a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; cursor: pointer; border: 2px solid #30363d; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        #chat-window { display: none; width: 300px; height: 400px; background: #0d1117; border: 1px solid #30363d; border-radius: 15px; flex-direction: column; position: fixed; bottom: 110px; right: 20px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
-        #chat-header { background: #1e3a8a; padding: 12px; font-weight: bold; text-align: center; font-size: 14px; color: white; }
-        #chat-messages { flex: 1; padding: 15px; overflow-y: auto; font-size: 13px; display: flex; flex-direction: column; gap: 10px; background: #0b111a; }
-        .bot-msg { background: #161b22; padding: 10px; border-radius: 10px; border: 1px solid #30363d; text-align: right; color: white; }
-        .user-msg { background: #1e3a8a; padding: 10px; border-radius: 10px; align-self: flex-start; color: white; }
-        
-        #chat-input-area { display: flex; padding: 10px; background: #0d1117; border-top: 1px solid #30363d; align-items: center; }
-        #chat-input { flex: 1; background: #010409; border: 1px solid #30363d; color: white; padding: 8px; border-radius: 5px; outline: none; margin-left: 5px; }
-        #send-btn { background: transparent; border: none; color: #22c55e; font-size: 20px; cursor: pointer; padding: 0 5px; }
+        body { background: url("https://img.freepik.com/premium-photo/dark-islamic-background-with-mosque-silhouette-golden-ornaments_1130458-3850.jpg") no-repeat center center fixed; background-size: cover; color:white; padding:10px; font-family:Arial; direction: rtl; text-align: center; }
+        .container { background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(5px); padding: 20px; border-radius: 25px; min-height: 90vh; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; align-items: center; }
+        .btn-main { padding:18px; background:#27ae60; color:white; border:none; border-radius:15px; margin:8px; width:95%; font-size:19px; font-weight:bold; cursor: pointer; display: block; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .sebha-area { background: rgba(39, 174, 96, 0.2); border: 2px solid #f1c40f; border-radius: 20px; padding: 20px; margin-bottom: 20px; width: 90%; cursor: pointer; }
+        .footer-text { margin-top:20px; border-top: 1px solid rgba(255,255,255,0.2); padding-top:15px; width: 100%; }
+        .social-icons { display: flex; justify-content: center; gap: 25px; margin: 10px 0; }
     </style>
 </head>
 <body>
-
-    <div class="cover-photo"></div>
-
-    <header>
-        <h1>عبد الرحمن</h1>
-        <p>الخدمات الذكية الشاملة</p>
-    </header>
-
     <div class="container">
-        <div class="grid">
-            <div class="card">
-                <div class="card-header-flex"><h3>واتساب</h3><i class="fab fa-whatsapp" style="color:#25D366"></i></div>
-                <p>تواصل معنا للدعم الفوري.</p>
-                <a href="https://wa.me/201153297929" class="btn bg-green" style="text-align:center">تواصل</a>
-            </div>
-            <div class="card">
-                <div class="card-header-flex"><h3>فيسبوك</h3><i class="fab fa-facebook" style="color:#1877F2"></i></div>
-                <p>تابع صفحتنا لآخر الأخبار.</p>
-                <a href="https://www.facebook.com/share/1H6QjtUqQG/" class="btn bg-blue" style="text-align:center">ابدأ</a>
-            </div>
-            <div class="card">
-                <div class="card-header-flex"><h3>يوتيوب</h3><i class="fab fa-youtube" style="color:#FF0000"></i></div>
-                <p>شاهد فيديوهاتنا التعليمية.</p>
-                <a href="https://youtube.com/channel/UC2k1P03gfQu_Ic759XaeYhw" class="btn bg-red" style="text-align:center">تابع</a>
-            </div>
-            <div class="card">
-                <div class="card-header-flex"><h3>وظائف</h3><span>💼</span></div>
-                <p>فرص عمل مميزة بانتظارك.</p>
-                <a class="btn btn-gray" style="text-align:center">قريباً</a>
-            </div>
-            <div class="card">
-                <div class="card-header-flex"><h3>متجر أونلاين</h3><span>🛒</span></div>
-                <p>تسوق أفضل المنتجات.</p>
-                <a class="btn btn-gray" style="text-align:center">قريباً</a>
-            </div>
-            <div class="card">
-                <div class="card-header-flex"><h3>نقل ومواصلات</h3><span>🚌</span></div>
-                <p>حلول نقل ذكية.</p>
-                <a class="btn btn-gray" style="text-align:center">قريباً</a>
+        <h1 style="color: #f1c40f; font-size: 20px;">تطبيق عبد الرحمن لمساعدة المسلمين</h1>
+        <div class="sebha-area" onclick="add()">
+            <div id="zekrDisplay" style="font-size: 24px; color: #27ae60; font-weight: bold;">سبحان الله</div>
+            <div id="count" style="font-size: 65px; color: #f1c40f; font-weight: bold;">0</div>
+            <p>اضغط للتسبيح (يتغير كل 33)</p>
+        </div>
+        <a href="https://abdo011-ops.github.io/noor/p_cities" class="btn-main">🕋 مواقيت الصلاة (20 محافظة)</a>
+        <a href="#" class="btn-main" style="background:#2980b9;">📖 المصحف الكريم</a>
+        <a href="#" class="btn-main" style="background:#f1c40f; color:black;">📜 الأحاديث النبوية (20 حديث)</a>
+        <a href="#" class="btn-main" style="background:#e74c3c;">📻 إذاعة القرآن الكريم</a>
+        <div class="footer-text">
+            <p style="font-size:16px; font-weight:bold;">فَإِذَا جَاءَ أَمْرُ اللَّهِ قُضِيَ بِالْحَقِّ</p>
+            <p style="font-size:13px; color:#27ae60;">تم تصميم هذا التطبيق لمساعدة المسلمين حول العالم</p>
+            <p style="font-size:14px; color:#fff; font-weight:bold;">تواصل معنا للمساعدة</p>
+            <div class="social-icons">
+                <a href="https://wa.me/201153297929"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="40"></a>
+                <a href="https://www.facebook.com/share/1DvSFCtmyo/"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" width="40"></a>
+                <a href="https://youtube.com/@m_p_r_m_g"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="40"></a>
             </div>
         </div>
     </div>
-
-    <div class="partners-section">
-        <div class="partners-title">شركاء النجاح</div>
-        <div class="partners-grid">
-            <img src="https://i.ibb.co/QhPLtPB/partner1.jpg">
-            <img src="https://i.ibb.co/9jf94dP/partner2.jpg">
-            <img src="https://i.ibb.co/rfTkX43m/partner3.jpg">
-        </div>
-        <a href="login.html" class="footer-admin">دخول المشرف 🔐</a>
-    </div>
-
-    <div id="chat-widget">
-        <div id="chat-button" onclick="toggleChat()">🤖</div>
-        <div id="chat-window">
-            <div id="chat-header">مساعد عبد الرحمن الذكي ⚡</div>
-            <div id="chat-messages">
-                <div class="bot-msg">أهلاً بك! أنا مساعد عبد الرحمن الذكي، كيف أساعدك؟</div>
-            </div>
-            <div id="chat-input-area">
-                <input type="text" id="chat-input" placeholder="اكتب سؤالك..." onkeypress="if(event.key === 'Enter') startAi()">
-                <button id="send-btn" onclick="startAi()">✔️</button>
-            </div>
-        </div>
-    </div>
-
     <script>
-        function toggleChat() {
-            const win = document.getElementById('chat-window');
-            win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
-        }
-
-        function startAi() {
-            const input = document.getElementById('chat-input');
-            const msgs = document.getElementById('chat-messages');
-            const val = input.value.trim();
-            if(!val) return;
-
-            msgs.innerHTML += `<div class="user-msg">${val}</div>`;
-            
-            setTimeout(() => {
-                let reply = "";
-                
-                // التعديل الذكي الجديد هنا:
-                if(val.includes("عروض")) {
-                    reply = "عندنا عروض حصرية على باقات الإنترنت حالياً! تابع الفيسبوك.";
-                } else if(val.includes("سلام")) {
-                    reply = "وعليكم السلام! نورت موقع الأستاذ عبد الرحمن.";
-                } else {
-                    // الرد في حالة أي سؤال غير معروف (زي عياش)
-                    reply = "يرجى العلم اني لا ازال تحت التدريب من قبل مصممي الاستاذ عبد الرحمن ويمكن الاستعانة به. <br><br> هل تريد التحويل إلي الآن؟ <br> <div style='margin-top:10px; display:flex; gap:10px;'><button onclick='window.location.href=\"https://wa.me/201153297929\"' style='background:#15803d; border:none; color:white; padding:5px 10px; border-radius:5px; cursor:pointer; font-weight:bold; flex:1;'>نعم</button><button onclick='this.parentElement.parentElement.innerHTML+=\"<br>حسناً، أنا هنا لمساعدتك في أي وقت!\"' style='background:#b91c1c; border:none; color:white; padding:5px 10px; border-radius:5px; cursor:pointer; font-weight:bold; flex:1;'>لا</button></div>";
-                }
-                
-                msgs.innerHTML += `<div class="bot-msg">${reply}</div>`;
-                msgs.scrollTop = msgs.scrollHeight;
-                input.value = '';
-            }, 600);
-        }
+        let c = 0; const azkar = ["سبحان الله", "الحمد لله", "الله أكبر", "لا إله إلا الله", "أستغفر الله"];
+        function add() { c++; document.getElementById('count').innerHTML = c; let index = Math.floor(c / 33) % azkar.length; document.getElementById('zekrDisplay').innerHTML = azkar[index]; }
     </script>
 </body>
 </html>
