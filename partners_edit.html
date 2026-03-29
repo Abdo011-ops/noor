@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>مدير السيستم الشامل - عبد الرحمن</title>
+    <style>
+        body { background: #0b141d; color: white; font-family: sans-serif; padding: 15px; text-align: right; }
+        .box { background: #1c1f26; padding: 20px; border-radius: 15px; border: 1px solid #333; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        h3 { color: #3b82f6; border-bottom: 1px solid #333; padding-bottom: 10px; margin-top: 0; }
+        label { display: block; margin-top: 10px; font-size: 13px; color: #94a3b8; }
+        input, select { width: 100%; padding: 12px; margin-top: 5px; background: #0d1117; color: white; border: 1px solid #444; border-radius: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 15px; transition: 0.3s; }
+        .btn-green { background: #059669; } .btn-blue { background: #1e40af; } .btn-red { background: #b91c1c; }
+        .item-list { background: #0d1117; padding: 10px; border-radius: 8px; margin-top: 10px; border: 1px dashed #444; position: relative; }
+        .del-btn { background: red; color: white; border: none; padding: 2px 8px; border-radius: 5px; cursor: pointer; float: left; }
+    </style>
+</head>
+<body>
+    <h2>🛠️ لوحة تحكم مدير السيستم</h2>
+
+    <div class="box">
+        <h3>🤝 إدارة شركاء النجاح</h3>
+        <label>رابط صورة الشريك (URL):</label>
+        <input type="text" id="partnerUrl" placeholder="ضع رابط صورة الشريك هنا">
+        <button class="btn-green" onclick="addPartner()">إضافة شريك جديد ➕</button>
+        <div id="pListDisplay"></div>
+    </div>
+
+    <div class="box">
+        <h3>📱 إدارة كروت الخدمات (الأيقونات والروابط)</h3>
+        <label>اسم الخدمة (مثلاً: واتساب):</label>
+        <input type="text" id="cardTitle">
+        <label>رابط الأيقونة (الصورة):</label>
+        <input type="text" id="cardImg" placeholder="رابط الأيقونة المربعة">
+        <label>رابط التحويل (URL):</label>
+        <input type="text" id="cardLink" placeholder="الرابط اللي هيروح له لما يدوس">
+        <label>لون الزر:</label>
+        <select id="cardColor">
+            <option value="bg-green">أخضر</option>
+            <option value="bg-blue">أزرق</option>
+            <option value="bg-red">أحمر</option>
+        </select>
+        <button class="btn-blue" onclick="addCard()">تثبيت الكارت في الصفحة الرئيسية 📌</button>
+        <div id="cListDisplay"></div>
+    </div>
+
+    <a href="dashboard.html" style="color:#8b949e; display:block; text-align:center;">الرجوع للوحة التحكم</a>
+
+    <script>
+        window.onload = function() { loadPartners(); loadCards(); };
+
+        // وظائف الشركاء
+        function loadPartners() {
+            var list = JSON.parse(localStorage.getItem('partnersList') || '[]');
+            var div = document.getElementById('pListDisplay');
+            div.innerHTML = "";
+            list.forEach((url, i) => {
+                div.innerHTML += `<div class="item-list"><img src="${url}" width="30"> شريك #${i+1} <button class="del-btn" onclick="delPartner(${i})">حذف</button></div>`;
+            });
+        }
+        function addPartner() {
+            var url = document.getElementById('partnerUrl').value;
+            if(url) {
+                var list = JSON.parse(localStorage.getItem('partnersList') || '[]');
+                list.push(url);
+                localStorage.setItem('partnersList', JSON.stringify(list));
+                loadPartners();
+            }
+        }
+        function delPartner(i) {
+            var list = JSON.parse(localStorage.getItem('partnersList') || '[]');
+            list.splice(i, 1);
+            localStorage.setItem('partnersList', JSON.stringify(list));
+            loadPartners();
+        }
+
+        // وظائف الكروت (الخدمات)
+        function loadCards() {
+            var cards = JSON.parse(localStorage.getItem('mainCards') || '[]');
+            var div = document.getElementById('cListDisplay');
+            div.innerHTML = "";
+            cards.forEach((c, i) => {
+                div.innerHTML += `<div class="item-list">📱 ${c.title} <button class="del-btn" onclick="delCard(${i})">حذف</button></div>`;
+            });
+        }
+        function addCard() {
+            var c = {
+                title: document.getElementById('cardTitle').value,
+                img: document.getElementById('cardImg').value,
+                link: document.getElementById('cardLink').value,
+                color: document.getElementById('cardColor').value
+            };
+            if(c.title && c.img) {
+                var cards = JSON.parse(localStorage.getItem('mainCards') || '[]');
+                cards.push(c);
+                localStorage.setItem('mainCards', JSON.stringify(cards));
+                loadCards();
+            }
+        }
+        function delCard(i) {
+            var cards = JSON.parse(localStorage.getItem('mainCards') || '[]');
+            cards.splice(i, 1);
+            localStorage.setItem('mainCards', JSON.stringify(cards));
+            loadCards();
+        }
+    </script>
+</body>
+</html>
+

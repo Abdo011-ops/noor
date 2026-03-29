@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تغذية وإعدادات البوت - أوفر درايف</title>
+    <style>
+        body { background: #0b0f14; color: white; font-family: Arial; text-align: center; padding: 20px; }
+        .container { max-width: 700px; margin: auto; background: #1c1f26; padding: 20px; border-radius: 15px; border: 1px solid #333; }
+        h2 { color: #007bff; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        
+        /* تصميم المربعات */
+        .section-box { background: #0b0f14; padding: 15px; border-radius: 10px; border: 1px solid #444; margin-bottom: 25px; text-align: right; }
+        h3 { color: #2ecc71; font-size: 18px; margin-top: 0; }
+        
+        input, textarea { width: 95%; padding: 10px; margin: 8px 0; background: #1c1f26; border: 1px solid #555; color: #fff; border-radius: 8px; text-align: right; }
+        
+        .btn-save-static { background: #15803d; color: white; padding: 10px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; }
+        .btn-add-smart { background: #1e3a8a; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        
+        table { width: 100%; margin-top: 15px; border-collapse: collapse; font-size: 13px; }
+        th, td { border: 1px solid #333; padding: 10px; text-align: center; }
+        th { background: #2d3436; }
+        .btn-del { background: #b91c1c; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>⚙️ لوحة تحكم البوت</h2>
+
+    <div class="section-box">
+        <h3>📍 النصوص الثابتة (الترحيب والعنوان)</h3>
+        <label>عنوان البوت العلوي:</label>
+        <input type="text" id="botHeaderTitle" placeholder="مثلاً: مساعد عبد الرحمن">
+        
+        <label>رسالة الترحيب التلقائية:</label>
+        <textarea id="botWelcomeMsg" rows="2" placeholder="الرسالة التي تظهر عند فتح الشات..."></textarea>
+        
+        <button class="btn-save-static" onclick="saveStaticTexts()">حفظ الإعدادات الثابتة ✅</button>
+    </div>
+
+    <div class="section-box">
+        <h3>🧠 تغذية الردود الذكية (القاموس)</h3>
+        <input type="text" id="keyword" placeholder="الكلمة المفتاحية">
+        <textarea id="response" placeholder="رد البوت"></textarea>
+        <button class="btn-add-smart" onclick="addNewRule()">إضافة للجدول +</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>الكلمة</th>
+                    <th>الرد</th>
+                    <th>حذف</th>
+                </tr>
+            </thead>
+            <tbody id="rulesTable">
+                </tbody>
+        </table>
+    </div>
+
+    <a href="dashboard.html" style="color:#888; text-decoration:none; font-size:12px;">⬅️ عودة للوحة التحكم</a>
+</div>
+
+<script>
+    // عند التحميل، نشغل الوظائف القديمة والجديدة
+    window.onload = function() {
+        displayRules(); // الوظيفة القديمة
+        loadStaticTexts(); // الوظيفة الجديدة
+    };
+
+    // --- الوظائف الجديدة للمربع المضاف ---
+    function saveStaticTexts() {
+        const title = document.getElementById('botHeaderTitle').value;
+        const welcome = document.getElementById('botWelcomeMsg').value;
+        localStorage.setItem('bot_title', title);
+        localStorage.setItem('bot_welcome', welcome);
+        alert("تم حفظ النصوص الثابتة بنجاح!");
+    }
+
+    function loadStaticTexts() {
+        document.getElementById('botHeaderTitle').value = localStorage.getItem('bot_title') || "مساعد عبد الرحمن الذكي";
+        document.getElementById('botWelcomeMsg').value = localStorage.getItem('bot_welcome') || "أهلاً بك! كيف يمكنني مساعدتك؟";
+    }
+
+    // --- الوظائف القديمة (بدون أي تغيير) ---
+    function addNewRule() {
+        const key = document.getElementById('keyword').value.trim();
+        const val = document.getElementById('response').value.trim();
+        if (key && val) {
+            let rules = JSON.parse(localStorage.getItem('bot_ai_data') || '[]');
+            rules.push({ keywords: [key], reply: val });
+            localStorage.setItem('bot_ai_data', JSON.stringify(rules));
+            document.getElementById('keyword').value = '';
+            document.getElementById('response').value = '';
+            displayRules();
+        }
+    }
+
+    function displayRules() {
+        let rules = JSON.parse(localStorage.getItem('bot_ai_data') || '[]');
+        const tableBody = document.getElementById('rulesTable');
+        tableBody.innerHTML = '';
+        rules.forEach((rule, index) => {
+            tableBody.innerHTML += `<tr><td>${rule.keywords}</td><td>${rule.reply}</td><td><button class="btn-del" onclick="deleteRule(${index})">حذف</button></td></tr>`;
+        });
+    }
+
+    function deleteRule(index) {
+        let rules = JSON.parse(localStorage.getItem('bot_ai_data') || '[]');
+        rules.splice(index, 1);
+        localStorage.setItem('bot_ai_data', JSON.stringify(rules));
+        displayRules();
+    }
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>إدارة الصلاحيات - عبد الرحمن</title>
+    <style>
+        body { background: #0b0f14; color: white; font-family: Arial; text-align: center; padding: 20px; }
+        .container { max-width: 600px; margin: auto; }
+        .box { background: #1c1f26; padding: 20px; border-radius: 15px; border: 1px solid #333; margin-bottom: 20px; text-align: right; }
+        h3 { margin-top: 0; }
+        input { width: 95%; padding: 12px; margin: 10px 0; background: #000; border: 1px solid #444; color: white; border-radius: 8px; text-align: center; }
+        .btn { width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .btn-admin { background: #e74c3c; color: white; } /* أحمر للمشرف */
+        .btn-user { background: #3498db; color: white; }  /* أزرق للمستخدم */
+        table { width: 100%; margin-top: 20px; border-collapse: collapse; background: #1c1f26; }
+        th, td { border: 1px solid #333; padding: 10px; text-align: center; }
+        .delete-btn { background: #c0392b; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🔐 نظام إدارة الحسابات</h2>
+
+        <div class="box">
+            <h3 style="color: #e74c3c;">⭐ إنشاء حساب مشرف (Admin)</h3>
+            <input type="text" id="adminPhone" placeholder="رقم تليفون المشرف">
+            <input type="password" id="adminPass" placeholder="كلمة السر للمشرف">
+            <button class="btn btn-admin" onclick="saveAccount('admin')">تفعيل كـ مشرف ✅</button>
+        </div>
+
+        <div class="box">
+            <h3 style="color: #3498db;">👤 إنشاء حساب مستخدم عادي (User)</h3>
+            <input type="text" id="userPhone" placeholder="رقم تليفون المستخدم">
+            <input type="password" id="userPass" placeholder="كلمة السر للمستخدم">
+            <button class="btn btn-user" onclick="saveAccount('user')">تفعيل كـ مستخدم عادي 👤</button>
+        </div>
+
+        <div class="box">
+            <h3>📋 الحسابات الحالية</h3>
+            <table>
+                <thead><tr><th>الرقم</th><th>النوع</th><th>حذف</th></tr></thead>
+                <tbody id="accountsTable"></tbody>
+            </table>
+        </div>
+        <a href="dashboard.html" style="color: #666; text-decoration: none;">⬅️ عودة للوحة التحكم</a>
+    </div>
+
+<script>
+    window.onload = loadTable;
+    function saveAccount(role) {
+        const phone = document.getElementById(role + 'Phone').value.trim();
+        const pass = document.getElementById(role + 'Pass').value.trim();
+        if (phone && pass) {
+            let users = JSON.parse(localStorage.getItem('systemUsers') || '[]');
+            if (users.find(u => u.name === phone)) { alert("الرقم مسجل فعلاً!"); return; }
+            users.push({ name: phone, pass: pass, role: role });
+            localStorage.setItem('systemUsers', JSON.stringify(users));
+            document.getElementById(role + 'Phone').value = '';
+            document.getElementById(role + 'Pass').value = '';
+            loadTable();
+            alert("تم الحفظ بنجاح!");
+        }
+    }
+    function loadTable() {
+        let users = JSON.parse(localStorage.getItem('systemUsers') || '[]');
+        const tbody = document.getElementById('accountsTable');
+        tbody.innerHTML = '';
+        users.forEach((u, i) => {
+            tbody.innerHTML += `<tr><td>${u.name}</td><td>${u.role==='admin'?'مشرف':'مستخدم'}</td><td><button class="delete-btn" onclick="deleteAcc(${i})">x</button></td></tr>`;
+        });
+    }
+    function deleteAcc(index) {
+        let users = JSON.parse(localStorage.getItem('systemUsers') || '[]');
+        users.splice(index, 1);
+        localStorage.setItem('systemUsers', JSON.stringify(users));
+        loadTable();
+    }
+</script>
+</body>
+</html>
+

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عبد الرحمن - إمبراطورية الخدمات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background-color: #0b0f14; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
+        
+        .cover-photo { 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.ibb.co/5x6QKS1j/cover.jpg') no-repeat center; 
+            background-size: cover; height: 200px; border-bottom: 4px solid #1e3a8a;
+        }
+
+        header { background: #cbd5e1; color: #1e3a8a; padding: 15px; box-shadow: 0 4px 15px rgba(0,75,160,0.3); text-align: center; }
+        header h1 { margin: 0; font-size: 30px; letter-spacing: 2px; }
+
+        .container { padding: 20px; max-width: 600px; margin: auto; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        
+        .card { 
+            background: #1c1f26; padding: 20px; border-radius: 20px; border: 1px solid #2d333b; 
+            text-align: center; transition: 0.3s; position: relative; overflow: hidden;
+        }
+        .card:hover { transform: translateY(-5px); border-color: #007bff; box-shadow: 0 5px 15px rgba(0,123,255,0.2); }
+        
+        /* أيقونات الشركات الأصلية */
+        .icon-box { font-size: 40px; margin-bottom: 10px; }
+        .fa-whatsapp { color: #25D366; }
+        .fa-facebook { color: #1877F2; }
+        .fa-youtube { color: #FF0000; }
+        .fa-briefcase { color: #f39c12; }
+
+        .card h3 { font-size: 18px; margin: 10px 0; color: #fff; }
+        .card p { font-size: 12px; color: #8b949e; margin-bottom: 15px; }
+        
+        .btn { display: block; padding: 10px; border-radius: 10px; text-decoration: none; font-size: 14px; color: white; font-weight: bold; transition: 0.3s; }
+        .bg-green { background: #15803d; }
+        .bg-blue { background: #1e40af; }
+        .bg-red { background: #b91c1c; }
+        .btn-disabled { background: #374151; color: #9ca3af; cursor: not-allowed; }
+
+        /* ستايل البوت الذكي المتطور */
+        .bot-toggle { position: fixed; bottom: 25px; left: 25px; background: #1e3a8a; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; cursor: pointer; box-shadow: 0 0 20px rgba(30,58,138,0.6); z-index: 1000; border: 2px solid #fff; }
+        .chat-box { position: fixed; bottom: 100px; left: 25px; width: 320px; background: #1c1f26; border-radius: 20px; border: 1px solid #333; display: none; flex-direction: column; z-index: 1000; box-shadow: 0 15px 50px rgba(0,0,0,0.8); }
+        .chat-header { background: #1e3a8a; color: white; padding: 15px; border-radius: 20px 20px 0 0; font-weight: bold; display: flex; justify-content: space-between; }
+        .chat-msgs { height: 300px; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #111; }
+        .msg { padding: 10px 14px; border-radius: 15px; font-size: 13px; line-height: 1.5; max-width: 85%; }
+        .bot-msg { background: #2d333b; align-self: flex-start; border-bottom-left-radius: 0; }
+        .user-msg { background: #1e3a8a; align-self: flex-end; border-bottom-right-radius: 0; text-align: right; }
+        .chat-input { display: flex; padding: 10px; background: #1c1f26; border-top: 1px solid #333; border-radius: 0 0 20px 20px; }
+        .chat-input input { flex: 1; padding: 10px; border: none; border-radius: 8px; background: #0b0f14; color: white; outline: none; }
+        
+        .partners-section { background: #fff; color: #1e293b; padding: 30px 20px; margin-top: 40px; border-radius: 40px 40px 0 0; }
+        .partners-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+        .partners-grid img { width: 100%; border-radius: 15px; filter: grayscale(20%); }
+    </style>
+</head>
+<body>
+
+    <div class="cover-photo"></div>
+
+    <header>
+        <h1>إمبراطورية عبد الرحمن</h1>
+        <p>ذكاء اصطناعي وخدمات متكاملة</p>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <div class="icon-box"><i class="fab fa-whatsapp"></i></div>
+                <h3>واتساب</h3>
+                <p>دعم فوري على مدار الساعة.</p>
+                <a href="https://wa.me/201153297929" class="btn bg-green">دردشة الآن</a>
+            </div>
+            <div class="card">
+                <div class="icon-box"><i class="fab fa-facebook"></i></div>
+                <h3>فيسبوك</h3>
+                <p>تابع أقوى العروض اليومية.</p>
+                <a href="https://www.facebook.com/share/1H6QjtUqQG/" class="btn bg-blue">زيارة الصفحة</a>
+            </div>
+            <div class="card">
+                <div class="icon-box"><i class="fab fa-youtube"></i></div>
+                <h3>يوتيوب</h3>
+                <p>فيديوهات حصرية وشروحات.</p>
+                <a href="https://youtube.com/channel/UC2k1P03gfQu_Ic759XaeYhw" class="btn bg-red">اشترك الآن</a>
+            </div>
+            <div class="card">
+                <div class="icon-box"><i class="fas fa-briefcase"></i></div>
+                <h3>الوظائف</h3>
+                <p>انضم لفريق عملنا المتميز.</p>
+                <a href="#" class="btn btn-disabled">قريباً</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="partners-section">
+        <h3 style="text-align: center; margin-bottom: 20px;">شركاء النجاح</h3>
+        <div class="partners-grid">
+            <img src="https://i.ibb.co/QhPLtPB/partner1.jpg">
+            <img src="https://i.ibb.co/9jf94dP/partner2.jpg">
+            <img src="https://i.ibb.co/rfTkX43m/partner3.jpg">
+        </div>
+        <a href="login.html" style="display:block; text-align:center; margin-top:20px; color:#64748b; font-size:12px; text-decoration:none;">لوحة تحكم المشرف 🔐</a>
+    </div>
+
+    <div class="bot-toggle" onclick="toggleChat()">🤖</div>
+
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+            <span>مساعد عبد الرحمن الذكي</span>
+            <span style="cursor:pointer" onclick="toggleChat()">×</span>
+        </div>
+        <div class="chat-msgs" id="chatMsgs">
+            <div class="msg bot-msg">مرحباً بك! أنا نظام الذكاء الاصطناعي الخاص بعبد الرحمن. كيف يمكنني خدمتك اليوم؟</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="اكتب سؤالك هنا..." onkeypress="if(event.key === 'Enter') askBot()">
+            <button onclick="askBot()" style="background:none; border:none; color:#1e3a8a; font-size:20px; margin-right:5px; cursor:pointer;">🚀</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleChat() {
+            const chat = document.getElementById('chatBox');
+            chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function askBot() {
+            const input = document.getElementById('chatInput');
+            const msgs = document.getElementById('chatMsgs');
+            const query = input.value.trim();
+            if (!query) return;
+
+            // إضافة رسالة المستخدم
+            msgs.innerHTML += `<div class="msg user-msg">${query}</div>`;
+            input.value = '';
+
+            // محاكاة تفكير الذكاء الاصطناعي
+            setTimeout(() => {
+                let reply = "عذراً، أنا حالياً في مرحلة التعلّم. هل تريد تحويلك للمسؤول عبد الرحمن؟ اكتب 'نعم'.";
+                
+                if(query.includes("عروض")) reply = "عندنا عروض نارية اليوم! باقات الإنترنت بخصم 50% لفترة محدودة.";
+                if(query.includes("رقم") || query.includes("تواصل")) reply = "يمكنك التواصل مع الأستاذ عبد الرحمن مباشرة عبر الواتساب الأخضر في القائمة الرئيسية.";
+                if(query.includes("سلام")) reply = "وعليكم السلام نورت الموقع! أنا البوت الذكي، اطلب أي خدمة وأنا أنفذها.";
+                if(query.includes("نعم")) reply = "جاري فتح الواتساب للمدير عبد الرحمن... انتظر ثانية.";
+
+                msgs.innerHTML += `<div class="msg bot-msg">${reply}</div>`;
+                msgs.scrollTop = msgs.scrollHeight;
+
+                if(query.includes("نعم")) {
+                    setTimeout(() => window.location.href = "https://wa.me/201153297929", 1500);
+                }
+            }, 800);
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم المشرف - أوفر درايف</title>
+    <style>
+        body { background-color: #0b0f14; color: white; font-family: Arial, sans-serif; margin: 0; text-align: center; }
+        header { background: #1e3a8a; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .container { padding: 20px; max-width: 600px; margin: auto; }
+        
+        .welcome-msg { margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 15px; }
+        .welcome-msg h2 { color: #007bff; margin: 0; }
+
+        /* شبكة الأزرار */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .btn-card { 
+            background: #1c1f26; padding: 25px 15px; border-radius: 15px; 
+            border: 1px solid #333; text-decoration: none; color: white; 
+            font-weight: bold; font-size: 14px; transition: 0.3s;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+        }
+        .btn-card:hover { background: #2d333b; transform: translateY(-5px); border-color: #007bff; }
+        
+        /* الأيقونات والألوان */
+        .icon { font-size: 24px; }
+        .bg-blue { border-top: 4px solid #007bff; }
+        .bg-green { border-top: 4px solid #2ecc71; }
+        .bg-orange { border-top: 4px solid #e67e22; }
+        .bg-purple { border-top: 4px solid #9b59b6; }
+        .bg-red { border-top: 4px solid #e74c3c; }
+
+        .logout-btn { display: block; margin-top: 30px; color: #888; text-decoration: none; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>لوحة التحكم 🛠️</h1>
+</header>
+
+<div class="container">
+    <div class="welcome-msg">
+        <h2>أهلاً يا مدير عبد الرحمن</h2>
+        <p style="color: #8b949e; font-size: 12px;">إليك أدوات إدارة موقعك الذكي</p>
+    </div>
+
+    <div class="grid">
+        <a href="visitors_log.html" class="btn-card bg-blue">
+            <span class="icon">👥</span>
+            سجل الزوار (المراقبة)
+        </a>
+
+        <a href="bot_settings.html" class="btn-card bg-green">
+            <span class="icon">🤖</span>
+            تغذية وإعدادات البوت
+        </a>
+
+        <a href="admin_chat.html" class="btn-card bg-orange">
+            <span class="icon">💬</span>
+            الدردشة الحية (العملاء)
+        </a>
+
+        <a href="#" class="btn-card bg-purple" onclick="alert('قريباً: إدارة الصلاحيات')">
+            <span class="icon">🔐</span>
+            إدارة المستخدمين
+        </a>
+    </div>
+
+    <a href="index.html" class="logout-btn">تسجيل الخروج ⬅️</a>
+</div>
+
+</body>
+</html>
+
