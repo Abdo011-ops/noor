@@ -8,6 +8,9 @@
         body { background: url("https://img.freepik.com/premium-photo/dark-islamic-background-with-mosque-silhouette-golden-ornaments_1130458-3850.jpg") no-repeat center center fixed; background-size: cover; color:white; padding:10px; font-family:Arial; direction: rtl; }
         .container { background: rgba(0,0,0,0.85); padding: 15px; border-radius: 20px; min-height: 95vh; display: flex; flex-direction: column; align-items: center; }
         .btn-main { padding:18px; background:#27ae60; color:white; border:none; border-radius:12px; margin:6px; width:95%; font-size:18px; font-weight:bold; cursor: pointer; display: block; text-decoration: none; text-align: center; }
+        .list-item { padding:12px; background:#111; border:1px solid #f1c40f; color:white; width:100%; border-radius:8px; font-size:14px; cursor:pointer; text-align:center; display:block; text-decoration:none; font-weight:bold; }
+        .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; width: 100%; margin-top:10px; }
+        .hadith-card { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border-right: 8px solid #f1c40f; width: 90%; text-align: right; line-height: 1.8; font-size: 22px; margin-top: 20px; }
         .alert-btn { background:#f39c12; animation: pulse 2s infinite; border: 2px solid #fff; }
         .azan-btn { background:#2980b9; margin-bottom: 10px; border: 2px solid #fff; }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
@@ -20,24 +23,61 @@
         <button id="audioBtn" class="btn-main alert-btn" onclick="toggleProphet()">🔔 اضغط هنا لتفعيل تنبيه الصلاة على النبي</button>
         <a href="https://abdo011-ops.github.io/noor/" class="btn-main">🕋 مواقيت الصلاة</a>
         <a href="#" class="btn-main" style="background:#2980b9;">📖 المصحف الكريم</a>
+        <a href="#" class="btn-main" style="background:#e67e22;">📚 تفسير القرآن</a>
         <a href="#" class="btn-main" style="background:#f1c40f; color:black;">📜 الأحاديث النبوية</a>
         <a href="#" class="btn-main" style="background:#16a085;">📿 السبحة الإلكترونية الذكية</a>
+        <a href="#" class="btn-main" style="background:#9b59b6;">🎧 المصحف الصوتي</a>
         <a href="#" class="btn-main" style="background:#e74c3c;">📻 إذاعة القرآن الكريم</a>
+        <div style="text-align:center; margin-top:20px; border-top: 1px solid #555; padding-top:15px; width: 100%;">
+            <p style="font-size:15px; font-weight:bold;">فَإِذَا جَاءَ أَمْرُ اللَّهِ قُضِيَ بِالْحَقِّ وَخَسِرَ هُنَالِكَ الْمُبْطِلُونَ</p>
+            <p style="font-size:13px; color:#27ae60;">تم تصميم هذا التطبيق لمساعدة المسلمين حول العالم</p>
+            <p style="font-size:13px; color:#fff;">تواصل معنا للمساعدة</p>
+            <div style="display: flex; justify-content: center; gap: 30px; margin-top: 15px;">
+                <a href="https://wa.me/201153297929"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="45"></a>
+                <a href="https://www.facebook.com/share/1DvSFCtmyo/"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" width="45"></a>
+                <a href="https://youtube.com/@m_p_r_m_g"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="45"></a>
+            </div>
+        </div>
     </div>
 
     <script>
         var prophetAudio = new Audio("https://f.top4top.io/m_2402v3u0l1.mp3");
         var azanAudio = new Audio("https://www.islamcan.com/audio/adan/azan1.mp3");
         var isProphetEnabled = false; var isAzanEnabled = false;
+        var prophetTimer = null;
 
         function toggleAzan() {
-            if (!isAzanEnabled) { azanAudio.play(); isAzanEnabled = true; document.getElementById('azanBtn').style.background = "#27ae60"; }
-            else { azanAudio.pause(); isAzanEnabled = false; document.getElementById('azanBtn').style.background = "#2980b9"; }
+            var btn = document.getElementById('azanBtn');
+            if (!isAzanEnabled) {
+                azanAudio.play().then(() => {
+                    azanAudio.pause(); azanAudio.currentTime = 0;
+                    isAzanEnabled = true;
+                    btn.innerHTML = "✅ تم تفعيل الأذان في جميع الصلوات";
+                    btn.style.background = "#27ae60";
+                });
+            } else {
+                isAzanEnabled = false;
+                btn.innerHTML = "🕋 اضغط لتفعيل الأذان في جميع الصلوات";
+                btn.style.background = "#2980b9";
+            }
         }
 
         function toggleProphet() {
-            if (!isProphetEnabled) { prophetAudio.play(); isProphetEnabled = true; document.getElementById('audioBtn').style.background = "#27ae60"; }
-            else { prophetAudio.pause(); isProphetEnabled = false; document.getElementById('audioBtn').style.background = "#f39c12"; }
+            var btn = document.getElementById('audioBtn');
+            if (!isProphetEnabled) {
+                prophetAudio.play().then(() => {
+                    prophetAudio.pause(); prophetAudio.currentTime = 0;
+                    isProphetEnabled = true;
+                    btn.innerHTML = "✅ تم تفعيل تنبيهات الصلاة على النبي";
+                    btn.style.background = "#27ae60";
+                    prophetTimer = setInterval(function() { prophetAudio.play(); }, 3600000);
+                });
+            } else {
+                clearInterval(prophetTimer);
+                isProphetEnabled = false;
+                btn.innerHTML = "🔔 اضغط هنا لتفعيل تنبيه الصلاة على النبي";
+                btn.style.background = "#f39c12";
+            }
         }
     </script>
 </body>
